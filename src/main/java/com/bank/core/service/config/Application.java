@@ -1,13 +1,13 @@
-package com.bank.core.service.customer;
+package com.bank.core.service.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ComBankCoreServiceCustomerApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ComBankCoreServiceCustomerApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

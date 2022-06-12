@@ -1,10 +1,10 @@
-package com.bank.core.service.customer;
+package com.bank.core.service.config;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ComBankCoreServiceCustomerApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {
