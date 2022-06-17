@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bank.core.service.constants.ExceptionConstants;
@@ -13,20 +12,22 @@ import com.bank.core.service.constants.SuccessConstants;
 import com.bank.core.service.model.Customer;
 import com.bank.core.service.repository.CustomerRepository;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
-
+@AllArgsConstructor
 @Data
 @Log4j2
 @Service
 public class CustomerService {
 
 	
-	@Autowired
+	
 	private CustomerRepository repo;
 
-	public Optional<Customer> findById(@NotNull(message = "ID cannot be null") Long id) throws Exception {
+	public Optional<Customer> findById(@NotNull(message = "ID cannot be null") UUID id) throws Exception {
 		Optional<Customer> tmp = null;
 		try {
 
@@ -44,7 +45,7 @@ public class CustomerService {
 		Customer tmp = null;
 		try {
 			//generate the UUID using the jave util
-			cust.setId(12548);
+			cust.setId(UUID.randomUUID());
 			tmp = repo.save(cust);
 		} catch (Exception e) {
 			log.error(ExceptionConstants.EXCEPTION, e);
@@ -54,7 +55,7 @@ public class CustomerService {
 
 	}
 
-	public String deleteById(@NotNull(message = "ID cannot be null") Long id) throws Exception {
+	public String deleteById(@NotNull(message = "ID cannot be null") UUID id) throws Exception {
 	
 		try {
 			

@@ -4,9 +4,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
-import javax.websocket.server.PathParam;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +31,7 @@ public class CustomerController {
 	private CustomerService service;
 
 	@GetMapping("/customer/{id}")
-	public ResponseEntity<Customer> find(@NotNull(message = "ID cannot be null") @PathVariable(name = "id") Long id) throws Exception {
+	public ResponseEntity<Customer> find(@NotNull(message = "ID cannot be null") @PathVariable(name = "id") UUID id) throws Exception {
 		Optional<Customer> tmp;
 		log.debug("Finding customer with id:"+id);
 		tmp = service.findById(id);
@@ -48,7 +46,7 @@ public class CustomerController {
 		return "completed";
 	}
 	@DeleteMapping("/customer/{id}")
-	public String delete(@NotNull(message = "ID cannot be null") @PathVariable("id") Long id) throws Exception {
+	public String delete(@NotNull(message = "ID cannot be null") @PathVariable("id") UUID id) throws Exception {
 		log.debug("Deleting customer with id:"+id);
 		service.deleteById(id);
 		
